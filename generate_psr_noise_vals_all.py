@@ -36,8 +36,8 @@ for y in N:
     dalpha = alpha_uppers[y] - alpha_lowers[y]
     toaerrs = np.random.uniform(9e-8, 5e-7, size = N_psr)
 
-    fmt_str_tnoise = "tnoise: psr={:s},alpha={:.1f},p0={:.1e},fc=0.01\n"
-    fmt_str_obs = "observe: psr={:s},toaerr={:.1e},freq=1400\n"
+    fmt_str_tnoise = "tnoise: psr={:s},alpha={:.3f},p0={:.3e},fc=0.01\n"
+    fmt_str_obs = "observe: psr={:s},toaerr={:.3e},freq=1400\n"
     fmt_str_dat = "{:.4f}\t{:.4e}\t{:.4e}\n"
 
     for x in N:
@@ -60,7 +60,7 @@ for y in N:
 
         if not os.path.exists('ptasim_input_files//{:.2f}_{:.2f}.inp'.format(dP0, dalpha)):
             with open('ptasim_input_files/{:.2f}_{:.2f}.inp'.format(dP0, dalpha), 'w') as ptasim_inp_f:
-                ptasim_inp_f.write(ptasim_inp_template_str.format(dP0, dalpha, str_tnoise, str_obs))
+                ptasim_inp_f.write(ptasim_inp_template_str.format('{:.2f}'.format(dP0), '{:.2f}'.format(dalpha), str_tnoise, str_obs))
                 ptasim_inp_f.close()
 
             with open('psr_noise_vals/{:.2f}_{:.2f}.dat'.format(dP0, dalpha), 'w') as psr_datf:

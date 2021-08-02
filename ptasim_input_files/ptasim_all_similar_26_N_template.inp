@@ -1,5 +1,5 @@
 <define>
-name: all_similar_regsamp_{}_{}
+name: regsamp_{}_{}
 nproc: 10
 nreal: 10
 </define>

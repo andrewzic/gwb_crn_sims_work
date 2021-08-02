@@ -1,9 +1,9 @@
 #!/bin/tcsh
 
-@ n = 0
-foreach inp ( `ls ptasim_input_files/ptasim_all_similar_26_[0-4].inp` );
+foreach inp ( `ls $PWD/ptasim_input_files/[0-9]*.inp` );
+cd data/
 echo $inp
 ptaSimulate $inp
-source all_similar_regsamp_$n/scripts/runScripts_master
-@ n = $n + 1
+ind = `basename $inp .inp`
+source regsamp_$ind/scripts/runScripts_master
 end
