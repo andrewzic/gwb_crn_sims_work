@@ -60,7 +60,6 @@ tnoise: psr=J2124-3358,alpha=-4.4,p0=1.0e-23,fc=0.01
 tnoise: psr=J2129-5721,alpha=-4.2,p0=1.0e-23,fc=0.01
 tnoise: psr=J2145-0750,alpha=-4.3,p0=1.0e-23,fc=0.01
 tnoise: psr=J2241-5236,alpha=-4.4,p0=1.0e-23,fc=0.01
-
 </add>
 
 
@@ -101,5 +100,4 @@ observe: psr=J2124-3358,toaerr=2.2e-07,freq=1400
 observe: psr=J2129-5721,toaerr=2.4e-07,freq=1400
 observe: psr=J2145-0750,toaerr=3.8e-07,freq=1400
 observe: psr=J2241-5236,toaerr=3.9e-07,freq=1400
-
 </schedule>
