@@ -21,7 +21,7 @@ alpha_uppers = np.linspace(0, -4, 11)[::-1]
 alpha_lowers = np.linspace(-8, -4, 11)[::-1]
 
 p0_lowers = np.linspace(-30, -23, 11)[::-1]
-p0_uppers = np.linspace(-6, -23, 11) [::-1]
+p0_uppers = np.linspace(-16, -23, 11) [::-1]
 
 Alpha_lowers, P0_lowers = np.meshgrid(alpha_lowers, p0_lowers)
 Alpha_uppers, P0_uppers = np.meshgrid(alpha_uppers, p0_uppers)
