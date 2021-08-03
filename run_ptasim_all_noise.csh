@@ -6,6 +6,6 @@ echo $inp
 ptaSimulate "$inp"
 set ind=`basename "$inp" .inp`
 echo $ind
-#source regsamp_${ind}/scripts/runScripts_master
+source regsamp_${ind}/scripts/runScripts_master
 cd ..
 end
