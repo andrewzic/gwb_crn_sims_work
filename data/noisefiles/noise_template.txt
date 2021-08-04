@@ -1,0 +1,5 @@
+{
+    "PSR_efac": 1.0,
+    "PSR_log10_equad": -8.0,
+    "PSR_log10_ecorr": -8.0
+}
