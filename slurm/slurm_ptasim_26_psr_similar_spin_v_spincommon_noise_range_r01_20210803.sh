@@ -5,7 +5,7 @@
 #SBATCH --time=0-12:00:00
 #SBATCH --mem-per-cpu=32G
 #SBATCH --tmp=8G
-#SBATCH --array=0-1210
+#SBATCH --array=0-3
 
 # pyv="$(python -c 'import sys; print(sys.version_info[0])')"
 # if [ "$pyv" == 2 ]
@@ -26,12 +26,4 @@ echo $SLURM_ARRAY_TASK_ID
 paramfiles=(/flush5/zic006/gwb_crn_sims/params/all_mc_array_spin_v_spincommon/params_all_mc_array_spin_v_spincommon_[0-9]*.dat)
 echo "processing paramfile ${paramfiles[$SLURM_ARRAY_TASK_ID]}"
 
-
-#doing the main run
 singularity exec /home/zic006/psr_gwb.sif python3 /flush5/zic006/gwb_crn_sims/run_enterprise_simple.py --prfile ${paramfiles[$SLURM_ARRAY_TASK_ID]}
-
-#doing the results run
-singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} --info 1 -c 2 -p "gw" -f 1 -l 1 -m 1 -b 1 > `basename ${paramfiles[$SLURM_ARRAY_TASK_ID]} .dat`.result
-
-#calculating optimal statistic
-singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} -o 1 -g "hd,dipole,monopole" -N 10000
