@@ -1,0 +1,52 @@
+params_all_mc_array_spin_v_spincommon_0.00_0.00_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_0.80_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_1.60_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_2.40_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_3.20_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_0.00_4.00_20210803_r7.result:Samples in favor of models:  {0: 6155.0, 1: 743095.0}
+params_all_mc_array_spin_v_spincommon_0.00_4.80_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_5.60_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_6.40_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_0.00_7.20_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_0.00_8.00_20210803_r7.result:Samples in favor of models:  {0: 11183.0, 1: 738067.0}
+params_all_mc_array_spin_v_spincommon_11.20_0.00_20210803_r7.result:Samples in favor of models:  {0: 570963.0, 1: 178287.0}
+params_all_mc_array_spin_v_spincommon_11.20_0.80_20210803_r7.result:Samples in favor of models:  {0: 606291.0, 1: 142959.0}
+params_all_mc_array_spin_v_spincommon_11.20_1.60_20210803_r7.result:Samples in favor of models:  {0: 55907.0, 1: 693343.0}
+params_all_mc_array_spin_v_spincommon_11.20_2.40_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_11.20_3.20_20210803_r7.result:Samples in favor of models:  {0: 565079.0, 1: 184171.0}
+params_all_mc_array_spin_v_spincommon_11.20_4.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_11.20_4.80_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_11.20_5.60_20210803_r7.result:Samples in favor of models:  {0: 551849.0, 1: 197401.0}
+params_all_mc_array_spin_v_spincommon_11.20_6.40_20210803_r7.result:Samples in favor of models:  {0: 608625.0, 1: 140625.0}
+params_all_mc_array_spin_v_spincommon_11.20_7.20_20210803_r7.result:Samples in favor of models:  {0: 613110.0, 1: 136140.0}
+params_all_mc_array_spin_v_spincommon_11.20_8.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_12.60_0.00_20210803_r7.result:Samples in favor of models:  {0: 593413.0, 1: 155837.0}
+params_all_mc_array_spin_v_spincommon_12.60_0.80_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_12.60_1.60_20210803_r7.result:Samples in favor of models:  {0: 450915.0, 1: 298335.0}
+params_all_mc_array_spin_v_spincommon_12.60_2.40_20210803_r7.result:Samples in favor of models:  {0: 565861.0, 1: 183389.0}
+params_all_mc_array_spin_v_spincommon_12.60_3.20_20210803_r7.result:Samples in favor of models:  {0: 596846.0, 1: 152404.0}
+params_all_mc_array_spin_v_spincommon_12.60_4.00_20210803_r7.result:Samples in favor of models:  {0: 567044.0, 1: 182206.0}
+params_all_mc_array_spin_v_spincommon_12.60_4.80_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_12.60_5.60_20210803_r7.result:Samples in favor of models:  {0: 616585.0, 1: 132665.0}
+params_all_mc_array_spin_v_spincommon_12.60_6.40_20210803_r7.result:Samples in favor of models:  {0: 584268.0, 1: 164982.0}
+params_all_mc_array_spin_v_spincommon_12.60_7.20_20210803_r7.result:Samples in favor of models:  {0: 585851.0, 1: 163399.0}
+params_all_mc_array_spin_v_spincommon_12.60_8.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_14.00_0.00_20210803_r7.result:Samples in favor of models:  {0: 554937.0, 1: 194313.0}
+params_all_mc_array_spin_v_spincommon_1.40_0.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_14.00_0.80_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_14.00_1.60_20210803_r7.result:Samples in favor of models:  {0: 615124.0, 1: 134126.0}
+params_all_mc_array_spin_v_spincommon_14.00_2.40_20210803_r7.result:Samples in favor of models:  {0: 618924.0, 1: 130326.0}
+params_all_mc_array_spin_v_spincommon_14.00_3.20_20210803_r7.result:Samples in favor of models:  {0: 606259.0, 1: 142991.0}
+params_all_mc_array_spin_v_spincommon_14.00_4.00_20210803_r7.result:Samples in favor of models:  {0: 567044.0, 1: 182206.0}
+params_all_mc_array_spin_v_spincommon_14.00_4.80_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_14.00_5.60_20210803_r7.result:Samples in favor of models:  {0: 422049.0, 1: 327201.0}
+params_all_mc_array_spin_v_spincommon_14.00_6.40_20210803_r7.result:Samples in favor of models:  {0: 511721.0, 1: 237529.0}
+params_all_mc_array_spin_v_spincommon_14.00_7.20_20210803_r7.result:Samples in favor of models:  {0: 611979.0, 1: 137271.0}
+params_all_mc_array_spin_v_spincommon_14.00_8.00_20210803_r7.result:Samples in favor of models:  {0: 615789.0, 1: 133461.0}
+params_all_mc_array_spin_v_spincommon_1.40_0.80_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_1.60_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_2.40_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_3.20_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_4.00_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_4.80_20210803_r7.result:Samples in favor of models:  {1: 749250.0}
+params_all_mc_array_spin_v_spincommon_1.40_5.60_20210803_r7.result:Samples in favor of models:  {0: 423010.0, 1: 326240.0}
