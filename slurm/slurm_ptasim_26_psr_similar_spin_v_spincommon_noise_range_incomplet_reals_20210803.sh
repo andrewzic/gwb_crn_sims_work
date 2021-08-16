@@ -2,10 +2,11 @@
 #SBATCH --job-name=gwb_crn_sims_mc_spin_v_spincommon_noise_range_allreal
 #SBATCH --output=/flush5/zic006/gwb_crn_sims/slurm_logs/gwb_crn_sims_mc_spin_v_spincommon_noise_range_20210803_%A_%a.log
 #SBATCH --ntasks=4
+#SBATCH --nodes=1
 #SBATCH --time=0-13:00:00
-#SBATCH --mem-per-cpu=32G
+#SBATCH --mem=32G
 #SBATCH --tmp=8G
-#SBATCH --array=0-1210
+#SBATCH --array=721-1210
 
 # pyv="$(python -c 'import sys; print(sys.version_info[0])')"
 # if [ "$pyv" == 2 ]
