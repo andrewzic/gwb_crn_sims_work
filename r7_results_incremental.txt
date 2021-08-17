@@ -84,5 +84,17 @@ params_all_mc_array_spin_v_spincommon_5.60_4.00_20210803_r7.result:Samples in fa
 params_all_mc_array_spin_v_spincommon_5.60_4.80_20210803_r7.result:Samples in favor of models:  {0: 152842.0, 1: 596408.0}
 params_all_mc_array_spin_v_spincommon_5.60_5.60_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
 params_all_mc_array_spin_v_spincommon_5.60_6.40_20210803_r7.result:Samples in favor of models:  {0: 86385.0, 1: 662865.0}
+params_all_mc_array_spin_v_spincommon_5.60_7.20_20210803_r7.result:Samples in favor of models:  {0: 501750.0, 1: 247500.0}
+params_all_mc_array_spin_v_spincommon_5.60_8.00_20210803_r7.result:Samples in favor of models:  {0: 448804.0, 1: 300446.0}
 params_all_mc_array_spin_v_spincommon_7.00_0.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_7.00_0.80_20210803_r7.result:Samples in favor of models:  {0: 579490.0, 1: 169760.0}
+params_all_mc_array_spin_v_spincommon_7.00_1.60_20210803_r7.result:Samples in favor of models:  {0: 102499.0, 1: 646751.0}
+params_all_mc_array_spin_v_spincommon_7.00_2.40_20210803_r7.result:Samples in favor of models:  {0: 577851.0, 1: 171399.0}
 params_all_mc_array_spin_v_spincommon_7.00_3.20_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_7.00_4.00_20210803_r7.result:Samples in favor of models:  {0: 569792.0, 1: 179458.0}
+params_all_mc_array_spin_v_spincommon_7.00_4.80_20210803_r7.result:Samples in favor of models:  {0: 508541.0, 1: 240709.0}
+params_all_mc_array_spin_v_spincommon_7.00_5.60_20210803_r7.result:Samples in favor of models:  {0: 414334.0, 1: 334916.0}
+params_all_mc_array_spin_v_spincommon_7.00_6.40_20210803_r7.result:Samples in favor of models:  {0: 47752.0, 1: 701498.0}
+params_all_mc_array_spin_v_spincommon_8.40_0.00_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_8.40_5.60_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
+params_all_mc_array_spin_v_spincommon_8.40_6.40_20210803_r7.result:Samples in favor of models:  {0: 8250.0}
