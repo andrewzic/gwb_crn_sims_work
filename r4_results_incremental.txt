@@ -103,3 +103,6 @@ params_all_mc_array_spin_v_spincommon_8.40_1.60_20210803_r4.result:Samples in fa
 params_all_mc_array_spin_v_spincommon_8.40_2.40_20210803_r4.result:Samples in favor of models:  {0: 8250.0}
 params_all_mc_array_spin_v_spincommon_8.40_3.20_20210803_r4.result:Samples in favor of models:  {0: 552871.0, 1: 196379.0}
 params_all_mc_array_spin_v_spincommon_8.40_4.00_20210803_r4.result:Samples in favor of models:  {0: 508135.0, 1: 241115.0}
+params_all_mc_array_spin_v_spincommon_8.40_4.80_20210803_r4.result:Samples in favor of models:  {0: 23242.0, 1: 726008.0}
+params_all_mc_array_spin_v_spincommon_8.40_5.60_20210803_r4.result:Samples in favor of models:  {0: 552225.0, 1: 197025.0}
+params_all_mc_array_spin_v_spincommon_8.40_6.40_20210803_r4.result:Samples in favor of models:  {0: 586826.0, 1: 162424.0}
