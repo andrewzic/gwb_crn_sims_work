@@ -41,10 +41,14 @@ for y in N:
 
 dalphas = np.array(sorted(dalphas))
 for x in N:
+
     p0s = 10**(np.random.uniform(p0_lowers[x], p0_uppers[x], size = N_psr))
     log10As = p2e.P02A(p0s, 0.01, -alphas)
-    log10A_lower = p2e.P02A(10**p0_lowers[x], 0.01, -1.0*np.array([alpha_lowers[y], alpha_uppers[y]]))
-    log10A_upper = p2e.P02A(10**p0_uppers[x], 0.01, -1.0*np.array([alpha_lowers[y], alpha_uppers[y]]))
+    print(alpha_lowers[x])
+    log10A_lower = p2e.P02A(10**p0_lowers[x], 0.01, -1.0*np.array([alpha_lowers[x], alpha_uppers[x]]))
+    log10A_upper = p2e.P02A(10**p0_uppers[x], 0.01, -1.0*np.array([alpha_lowers[x], alpha_uppers[x]]))
+    if x == 0:
+        print('HFWBFKNJKFAD', log10A_lower, log10A_upper)
     dP0 = p0_uppers[x] - p0_lowers[x]
     dP0s.append(dP0)
     dlog10_A = np.max(log10A_upper) - np.min(log10A_lower)
@@ -56,7 +60,7 @@ dlog10_As = np.array(dlog10_As)
 bf_matrix_list = []
 for realisation_ind in range(0, 10):
   bf_matrix = np.nan*np.zeros_like(Alpha_lowers)
-  print(realisation_ind)
+  #print(realisation_ind)
   incremental_result_file = 'r{}_results_incremental.txt'.format(realisation_ind)
   incremental_results = open(incremental_result_file, 'r')
   for line in incremental_results.readlines():
@@ -73,15 +77,15 @@ for realisation_ind in range(0, 10):
       continue
 
     for r, n in zip(result_models, result_nsamp):
-      print(r, n)
+      #print(r, n)
       result_dict[r] = n
       _bf = result_dict['1'] / result_dict['0']
 
       #print(result)
       dP0 = float(l[7])
       dalpha = float(l[8])
-      print(dP0, dalpha)
-      print(_bf, result_dict['1'], result_dict['0'], result)
+      #print(dP0, dalpha)
+      #print(_bf, result_dict['1'], result_dict['0'], result)
 
       dP0_ind = np.where(np.isclose(dP0s, dP0))
       dalpha_ind = np.where(np.isclose(dalphas , dalpha))
