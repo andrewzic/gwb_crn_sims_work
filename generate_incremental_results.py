@@ -74,6 +74,7 @@ for realisation_ind in range(0, 10):
     result_models = [r[0] for r in result]
     result_nsamp = [float(r.split(' ')[-1]) for r in result]
     if result_models == ['0'] and result_nsamp == [8250.0]:
+      print(line)        
       continue
 
     for r, n in zip(result_models, result_nsamp):
