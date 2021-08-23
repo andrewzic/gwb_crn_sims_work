@@ -41,4 +41,4 @@ fi
 singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} --info 1 -c 2 -p "gw" -f 1 -l 1 -m 1 -b 1 > `basename ${paramfiles[$SLURM_ARRAY_TASK_ID]} .dat`.result
 
 #calculating optimal statistic
-singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} -o 1 -g "hd,dipole,monopole" -N 10000
+singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} -o 1 -g "hd,dipole,monopole" -N 10000 -M 1
