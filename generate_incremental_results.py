@@ -74,7 +74,7 @@ for realisation_ind in range(0, 10):
     result_models = [r[0] for r in result]
     result_nsamp = [float(r.split(' ')[-1]) for r in result]
     if result_models == ['0'] and result_nsamp == [8250.0]:
-      print(line)        
+      print(line)
       continue
 
     for r, n in zip(result_models, result_nsamp):
@@ -93,6 +93,8 @@ for realisation_ind in range(0, 10):
       bf_matrix[dP0_ind, dalpha_ind] = _bf
   bf_matrix_list.append(bf_matrix)
 bf_matrix = np.nanmean(np.array(bf_matrix_list), axis = 0)
+
+print(bf_matrix.shape)
 
 import matplotlib.colors
 from matplotlib.ticker import LogLocator
@@ -121,4 +123,4 @@ ax.tick_params(axis='x', labelsize = font['size'])
 plt.minorticks_on()
 plt.savefig('bf_matrix.pdf', bbox_inches = 'tight')
 plt.savefig('bf_matrix.png', bbox_inches = 'tight', dpi = 300)
-plt.show()
+# plt.show()

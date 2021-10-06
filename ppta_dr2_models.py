@@ -33,21 +33,22 @@ class PPTADR2Models(StandardModels):
       "event_j2145_t0": [56100., 56500.],
       "event_j1603_t0": [53710., 54070.],
       "f2_range": 1e-6,
+      "gwb_gamma_prior": "uniform",
     })
 
   def dm_annual(self, option="default"):
     if option=="default": idx = 2
     return dm_annual_signal(idx=idx)
-  
+
   def fd_sys_g(self,option=[]):
-  
-    idx = 1 # fitting linear trend 
+
+    idx = 1 # fitting linear trend
     for ii, fd_sys_term in enumerate(option):
       name = 'fd' + str(idx) + '_sys_' + fd_sys_term
       slope = parameter.Uniform(-self.params.fd_sys_slope_range,\
                                  self.params.fd_sys_slope_range)
       wf = fd_system(slope = slope, idx_fd = idx)
-  
+
       selection_function_name = 'fd_system_selection_' + \
                                  str(self.sys_noise_count)
       setattr(self, selection_function_name,
@@ -58,18 +59,18 @@ class PPTADR2Models(StandardModels):
       else:
         self.psr.sys_flags.append('group')
         self.psr.sys_flagvals.append(fd_sys_term)
-  
+
       fd_sys_term = deterministic_signals.Deterministic( wf, name=name,
                     selection=selections.Selection(\
                     self.__dict__[selection_function_name]) )
-  
+
       if ii == 0:
         fd_sys = fd_sys_term
       elif ii > 0:
         fd_sys += fd_sys_term
-  
+
       self.sys_noise_count += 1
-  
+
     return fd_sys
 
   def j0437_event(self, option="exp_dip"):
@@ -77,29 +78,29 @@ class PPTADR2Models(StandardModels):
                               self.params.event_j0437_t0[1], idx="vary",
                               tau_min_10_pow=self.params.event_j0437_tau_10p[0],
                               tau_max_10_pow=self.params.event_j0437_tau_10p[1])
-  
+
   def j1713_event_1(self, option="exp_dip"):
     return dm_exponential_dip(self.params.event_j1713_1_t0[0],
                               self.params.event_j1713_1_t0[1], idx=2,
                               tau_min_10_pow=5, tau_max_10_pow=1000,
                               name='dmexp_1')
-  
+
   def j1713_event_2(self, option="exp_dip"):
     return dm_exponential_dip(self.params.event_j1713_2_t0[0],
                               self.params.event_j1713_2_t0[1], idx="vary",
                               tau_min_10_pow=5, tau_max_10_pow=100,
                               name='dmexp_2')
-  
+
   def j1643_event(self, option="exp_dip"):
     return dm_exponential_dip(self.params.event_j1643_t0[0],
                               self.params.event_j1643_t0[1],
                               idx="vary", tau_min_10_pow=5, tau_max_10_pow=1000)
-  
+
   def j2145_event(self, option="exp_dip"):
     return dm_exponential_dip(self.params.event_j2145_t0[0],
                               self.params.event_j2145_t0[1],
                               idx="vary", tau_min_10_pow=5, tau_max_10_pow=1000)
-  
+
   def j1603_event(self, option="gaussian_bump"):
     return dm_gaussian_bump(self.params.event_j1603_t0[0],
                             self.params.event_j1603_t0[1], idx=2)
@@ -133,7 +134,7 @@ class PPTADR2Models(StandardModels):
       setattr(self, paired_band_term, globals()[paired_band_term])
 
       tspan = self.determine_tspan(sel_func_name=paired_band_term)
-  
+
       pbn_term = gp_signals.FourierBasisGP(spectrum=pl, Tspan=tspan,
                                         name='band_noise_' + paired_band_term,
                                         selection=selections.Selection( \
@@ -196,7 +197,8 @@ class PPTADR2Models(StandardModels):
       ekw['d_jupiter_mass'] = parameter.Normal(0, 1.54976690e-11)\
                                               ('d_jup_mass')
     if "jup_el" in option or "outer" in option or "default" in option:
-      if isinstance(option, dict) and type(option['jup_el']) is list:
+      if isinstance(option, dict) and (type(option['jup_el']) is list or \
+                                       type(option['jup_el']) is np.ndarray):
         ekw['jup_orb_elements'] = UniformMask(-0.05, 0.05, option['jup_el'])\
                                              ('jup_oe')
       else:
@@ -274,11 +276,18 @@ class PPTADR2Models(StandardModels):
         elif self.params.gwb_lgA_prior == "linexp":
           gwb_log10_A = parameter.LinearExp(self.params.gwb_lgA[0],
                                             self.params.gwb_lgA[1])(amp_name)
+        elif self.params.gwb_lgA_prior == "normal":
+          gwb_log10_A = parameter.Normal(mu=self.params.gwb_lgA[0],
+                                         sigma=self.params.gwb_lgA[1])(amp_name)
 
         gam_name = '{}_gamma'.format(name)
         if "vary_gamma" in option:
-          gwb_gamma = parameter.Uniform(self.params.gwb_gamma[0],
-                                        self.params.gwb_gamma[1])(gam_name)
+          if self.params.gwb_gamma_prior == "uniform":
+            gwb_gamma = parameter.Uniform(self.params.gwb_gamma[0],
+                                          self.params.gwb_gamma[1])(gam_name)
+          if self.params.gwb_gamma_prior == "normal":
+            gwb_gamma = parameter.Normal(sigma=self.params.gwb_gamma[1],
+                                         mu=self.params.gwb_gamma[0])(gam_name)
         elif "fixed_gamma" in option:
           gwb_gamma = parameter.Constant(4.33)(gam_name)
         else:
@@ -534,6 +543,8 @@ def by_B_1020CM(flags):
 
 # Custom priors
 
+
+
 #def UniformMaskPrior(value, pmin, pmax, mask):
 #    """Prior function for Uniform parameters."""
 #    print('Warning! Does not work: pmin and pmax are passed OK as both \
@@ -572,7 +583,7 @@ def UniformMask(pmin, pmax, mask):
 
     class UniformMask(parameter.Parameter):
         _size = len(mask) #size
-        _prior = parameter.Function(UniformMaskPrior, pmin=pmin, 
+        _prior = parameter.Function(UniformMaskPrior, pmin=pmin,
                                     pmax=pmax, mask=mask)
         _sampler = staticmethod(UniformMaskSampler)
         _typename = parameter._argrepr("UniformMask", pmin=pmin, pmax=pmax,
