@@ -24,4 +24,4 @@ paramfiles=(/flush5/zic006/gwb_crn_sims/params/all_mc_array_spin_v_spincommon/pa
 echo "processing paramfile ${paramfiles[$SLURM_ARRAY_TASK_ID]}"
 
 #calculating optimal statistic
-singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} -o 1 -g "hd,dipole,monopole" -N 5000
+singularity exec /home/zic006/psr_gwb.sif python3 -m enterprise_warp.results --result ${paramfiles[$SLURM_ARRAY_TASK_ID]} -o 1 -g "hd,dipole,monopole" -N 5000 -M 1
