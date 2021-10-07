@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import pickle
 import ptasim2enterprise as p2e
 
 import argparse
@@ -30,6 +31,7 @@ p0_uppers = np.linspace(-16, -23, 11) [::-1]
 Alpha_lowers, P0_lowers = np.meshgrid(alpha_lowers, p0_lowers)
 Alpha_uppers, P0_uppers = np.meshgrid(alpha_uppers, p0_uppers)
 
+N = np.arange(0, p0_lowers.shape[0])
 
 dalphas = []
 dP0s = []
@@ -63,6 +65,13 @@ os_matrix_list = []
 os_marg_matrix_list = []
 os_snr_matrix_list = []
 os_marg_snr_matrix_list = []
+
+m_os_matrix =          np.nan*np.zeros_like(Alpha_lowers)
+m_os_marg_matrix =     np.nan*np.zeros_like(Alpha_lowers)
+m_os_snr_matrix =      np.nan*np.zeros_like(Alpha_lowers)
+m_os_marg_snr_matrix = np.nan*np.zeros_like(Alpha_lowers)
+
+
 for realisation_ind in realisations:
 
 
@@ -71,7 +80,7 @@ for realisation_ind in realisations:
   result_dalphas = [float(i.split('/')[-2].split('_')[-2]) for i in result_dirs]
 
   os_pickle_files = [i + '_os_results.pkl' for i in result_dirs]
-  chain_files = [glob.glob(i + 'chain_*.txt')[0] for i in result_dirs]
+  chain_files = [i + '/chain_1.txt' for i in result_dirs]
   for os_pickle_file, result_dP0, result_dalpha, chain in zip(os_pickle_files, result_dP0s, result_dalphas, chain_files):
 
     os_matrix = np.nan*np.zeros_like(Alpha_lowers)
@@ -85,8 +94,10 @@ for realisation_ind in realisations:
     if chainsize < 1E8:
       continue
     with open(os_pickle_file, 'rb') as os_pickle:
+    
       os_result = pickle.load(os_pickle)
-      os_result = os_result['hd']
+      print(os_pickle_file)
+      os_result = os_result['monopole']
       os_OS = os_result['OS']
       os_OS_err = os_result['OS_err']
       os_SNR = os_OS/os_OS_err
@@ -103,13 +114,18 @@ for realisation_ind in realisations:
     os_marg_matrix_list.append(os_matrix_list)
     os_snr_matrix_list.append(os_snr_matrix)
     os_marg_snr_matrix_list.append(os_marg_snr_matrix)
+    print('doing dstacks')
+    m_os_matrix =          np.dstack([m_os_matrix, os_matrix])
+    m_os_marg_matrix =     np.dstack([m_os_marg_matrix, os_marg_matrix])
+    m_os_snr_matrix =      np.dstack([m_os_snr_matrix, os_snr_matrix])
+    m_os_marg_snr_matrix = np.dstack([m_os_marg_snr_matrix, os_marg_snr_matrix])
 
-m_os_matrix = np.nanmean(np.array(os_matrix_list), axis = 0)
-m_os_marg_matrix = np.nanmean(np.array(os_marg_matrix_list), axis = 0)
-m_os_snr_matrix = np.nanmean(np.array(os_snr_matrix_list), axis = 0)
-m_os_marg_snr_matrix = np.nanmean(np.array(os_marg_snr_matrix_list), axis = 0)
+m_os_matrix =          np.nanmean(m_os_matrix[:, :, 1:], axis = 2) #np.array(os_matrix_list)[:, :, 1:], axis = 0)
+m_os_marg_matrix =     np.nanmean(m_os_marg_matrix[:, :, 1:], axis = 2)#np.array(os_marg_matrix_list), axis = 0)
+m_os_snr_matrix =      np.nanmean(m_os_snr_matrix[:, :, 1:], axis = 2)#np.array(os_snr_matrix_list), axis = 0)
+m_os_marg_snr_matrix = np.nanmean(m_os_marg_snr_matrix[:, :, 1:], axis = 2)#np.array(os_marg_snr_matrix_list), axis = 0)
 
-mport matplotlib.colors
+import matplotlib.colors
 from matplotlib.ticker import LogLocator
 
 plt.rcParams.update({
@@ -121,11 +137,11 @@ font = {'family' : 'serif',
         'size'   : 17}
 
 fig, ax = plt.subplots(1,1)
-im = plt.imshow(m_os_matrix, cmap = 'coolwarm', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
-#im = plt.imshow(bf_matrix, cmap = 'coolwarm', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
+im = plt.imshow(np.abs(m_os_matrix), cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
+#im = plt.imshow(bf_matrix, cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
 
 cb = plt.colorbar(im)#, ticks = LogLocator(subs=range(10)))
-cb.set_label('$\hat{{A}}^{{2}}$', fontsize = font['size'])
+cb.set_label('$\hat{{A_{\mathrm{mp}}}}^{{2}}$', fontsize = font['size'])
 cb.ax.minorticks_on()
 #minorticks = im.norm(np.arange(1E-6, 1E6, 1))
 #cb.ax.yaxis.set_ticks(minorticks, minor = True)
@@ -134,6 +150,57 @@ ax.set_ylabel(r'$\Delta \log_{{10}}(P_0)$', fontdict = font)
 ax.tick_params(axis='y', labelsize = font['size'])
 ax.tick_params(axis='x', labelsize = font['size'])
 plt.minorticks_on()
-plt.savefig('tmp.png', dpi = 300, bbox_inches = 'tight')
+plt.savefig('os_matrix_mp.png', dpi = 300, bbox_inches = 'tight')
+
+fig, ax = plt.subplots(1,1)
+im = plt.imshow(np.abs(m_os_marg_matrix), cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
+#im = plt.imshow(bf_matrix, cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
+
+cb = plt.colorbar(im)#, ticks = LogLocator(subs=range(10)))
+cb.set_label('$\hat{{A_{\mathrm{mp}}}}^{{2}}$', fontsize = font['size'])
+cb.ax.minorticks_on()
+#minorticks = im.norm(np.arange(1E-6, 1E6, 1))
+#cb.ax.yaxis.set_ticks(minorticks, minor = True)
+ax.set_xlabel(r'$\Delta \alpha$', fontdict = font)
+ax.set_ylabel(r'$\Delta \log_{{10}}(P_0)$', fontdict = font)
+ax.tick_params(axis='y', labelsize = font['size'])
+ax.tick_params(axis='x', labelsize = font['size'])
+plt.minorticks_on()
+plt.savefig('os_marg_matrix_mp.png', dpi = 300, bbox_inches = 'tight')
+
+fig, ax = plt.subplots(1,1)
+im = plt.imshow(np.abs(m_os_snr_matrix), cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
+#im = plt.imshow(bf_matrix, cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
+
+cb = plt.colorbar(im)#, ticks = LogLocator(subs=range(10)))
+cb.set_label('S/N(mp)', fontsize = font['size'])
+cb.ax.minorticks_on()
+#minorticks = im.norm(np.arange(1E-6, 1E6, 1))
+#cb.ax.yaxis.set_ticks(minorticks, minor = True)
+ax.set_xlabel(r'$\Delta \alpha$', fontdict = font)
+ax.set_ylabel(r'$\Delta \log_{{10}}(P_0)$', fontdict = font)
+ax.tick_params(axis='y', labelsize = font['size'])
+ax.tick_params(axis='x', labelsize = font['size'])
+plt.minorticks_on()
+plt.savefig('os_snr_matrix_mp.png', dpi = 300, bbox_inches = 'tight')
+
+fig, ax = plt.subplots(1,1)
+im = plt.imshow(np.abs(m_os_marg_snr_matrix), cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
+#im = plt.imshow(bf_matrix, cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
+
+cb = plt.colorbar(im)#, ticks = LogLocator(subs=range(10)))
+cb.set_label('S/N(mp)', fontsize = font['size'])
+cb.ax.minorticks_on()
+#minorticks = im.norm(np.arange(1E-6, 1E6, 1))
+#cb.ax.yaxis.set_ticks(minorticks, minor = True)
+ax.set_xlabel(r'$\Delta \alpha$', fontdict = font)
+ax.set_ylabel(r'$\Delta \log_{{10}}(P_0)$', fontdict = font)
+ax.tick_params(axis='y', labelsize = font['size'])
+ax.tick_params(axis='x', labelsize = font['size'])
+plt.minorticks_on()
+plt.savefig('os_marg_snr_matrix_mp.png', dpi = 300, bbox_inches = 'tight')
+
+
+
 # plt.savefig('bf_matrix.pdf', bbox_inches = 'tight')
 # plt.savefig('bf_matrix.png', bbox_inches = 'tight', dpi = 300)
