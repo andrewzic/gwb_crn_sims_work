@@ -165,7 +165,7 @@ for corr in ['hd', 'dipole', 'monopole']:
 
   plot_matrix(m_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = corr_label)
   plot_matrix(m_os_marg_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'marg_{}'.format(corr_label))
-  plot_matrix(m_os_marg_matrix - m_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'diffmarg_{}'.format(corr_label))
+  plot_matrix(m_os_marg_matrix / m_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'diffmarg_{}'.format(corr_label))
 
   plot_matrix(m_os_snr_matrix, measure = 'S/N', label = corr_label)
   plot_matrix(m_os_marg_snr_matrix, measure = 'S/N', label = 'marg_{}'.format(corr_label))
