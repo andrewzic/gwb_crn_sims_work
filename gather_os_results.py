@@ -157,12 +157,20 @@ for corr in ['hd', 'dipole', 'monopole']:
   m_os_snr_matrix =      np.nanmean(os_snr_matrix[:, :, 1:], axis = 2)
   m_os_marg_snr_matrix = np.nanmean(os_marg_snr_matrix[:, :, 1:], axis = 2)
 
+  max_os_matrix =          np.nanmax(os_matrix[:, :, 1:], axis = 2)
+  max_os_marg_matrix =     np.nanmax(os_marg_matrix[:, :, 1:], axis = 2)
+  max_os_snr_matrix =      np.nanmax(os_snr_matrix[:, :, 1:], axis = 2)
+  max_os_marg_snr_matrix = np.nanmax(os_marg_snr_matrix[:, :, 1:], axis = 2)
+
   plot_matrix(m_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = corr_label)
   plot_matrix(m_os_marg_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'marg_{}'.format(corr_label))
   plot_matrix(m_os_snr_matrix, measure = 'S/N', label = corr_label)
   plot_matrix(m_os_marg_snr_matrix, measure = 'S/N', label = 'marg_{}'.format(corr_label))
 
-
+  plot_matrix(max_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'max{}'.format(corr_label))
+  plot_matrix(max_os_marg_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'maxmarg_{}'.format(corr_label))
+  plot_matrix(max_os_snr_matrix, measure = 'S/N', label = 'max{}'.format(corr_label))
+  plot_matrix(max_os_marg_snr_matrix, measure = 'S/N', label = 'maxmarg_{}'.format(corr_label))
 
 # fig, ax = plt.subplots(1,1)
 # im = plt.imshow(np.abs(m_os_marg_matrix), cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dP0s[[0,-1]]], aspect = 'auto', interpolation = 'none')#, clim = [1E-6, 1E6]) #
