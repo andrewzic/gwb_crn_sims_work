@@ -94,6 +94,7 @@ def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', d
   ax.tick_params(axis='x', labelsize = font['size'])
   plt.minorticks_on()
   plt.savefig('{}.png'.format(figname_pref), dpi = 300, bbox_inches = 'tight')
+  plt.close()
 
 
 
