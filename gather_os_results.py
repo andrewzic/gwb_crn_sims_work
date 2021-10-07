@@ -19,6 +19,10 @@ font = {'family' : 'serif',
         'size'   : 17}
 
 
+psr_list = np.loadtxt('psrs.dat', dtype = 'str')
+N_psr = len(psr_list)
+
+
 realisations = np.arange(0, 10, 1)
 
 np.random.seed(seed = 20210524)
