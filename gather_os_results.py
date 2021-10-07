@@ -84,7 +84,7 @@ def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', d
   #im = plt.imshow(bf_matrix, cmap = 'inferno', norm = matplotlib.colors.LogNorm(), origin = 'lower', extent = [*dalphas[[0,-1]], *dlog10_As[[0,-1]]], aspect = 'auto', clim = [1E-6, 1E6], interpolation = 'none') #
 
   cb = plt.colorbar(im)#, ticks = LogLocator(subs=range(10)))
-  cb.set_label(measure_str.format(label), fontsize = font['size'])
+  cb.set_label(measure_str.format(label.replace('marg_', '')), fontsize = font['size'])
   cb.ax.minorticks_on()
   #minorticks = im.norm(np.arange(1E-6, 1E6, 1))
   #cb.ax.yaxis.set_ticks(minorticks, minor = True)
@@ -100,6 +100,7 @@ def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', d
 
 for corr in ['hd', 'dipole', 'monopole']:
   corr_label = corr_labels[corr]
+  print(corr_label)
 
   for realisation_ind in realisations:
 
