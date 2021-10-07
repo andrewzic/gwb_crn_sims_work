@@ -74,7 +74,7 @@ corr_labels = {'hd': 'hd', 'dipole': 'dp', 'monopole': 'mp'}
 
 def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', dalphas = dalphas, dP0s = dP0s):
 
-  measure_dict = {'A': r'$\hat{{A}}_{\mathrm{{}}}^{{2}}$', 'S/N': 'S/N({})'}
+  measure_dict = {'A': r'$\hat{{A}}_{{\mathrm{{{}}}}}^{{2}}$', 'S/N': 'S/N({})'}
   measure_fignames = {'A': 'A2', 'S/N': 'snr'}
 
   measure_str = measure_dict[measure]
