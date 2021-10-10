@@ -72,7 +72,7 @@ os_marg_snr_matrix = np.nan*np.zeros((dP0s.shape[0], dalphas.shape[0], realisati
 
 corr_labels = {'hd': 'hd', 'dipole': 'dp', 'monopole': 'mp'}
 
-def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', dalphas = dalphas, dP0s = dP0s):
+def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', dalphas = dalphas, dP0s = dP0s, close = True):
 
   measure_dict = {'A': r'$\hat{{A}}_{{\mathrm{{{}}}}}^{{2}}$', 'S/N': 'S/N({})'}
   measure_fignames = {'A': 'A2', 'S/N': 'snr'}
@@ -94,7 +94,11 @@ def plot_matrix(matrix, norm = None, type = 'os', measure = 'A', label = 'hd', d
   ax.tick_params(axis='x', labelsize = font['size'])
   plt.minorticks_on()
   plt.savefig('{}.png'.format(figname_pref), dpi = 300, bbox_inches = 'tight')
-  plt.close()
+  if close:
+    plt.close()
+  else:
+    plt.show()
+    
 
 
 
@@ -161,6 +165,7 @@ for corr in ['hd', 'dipole', 'monopole']:
   max_os_matrix =          np.nanmax(os_matrix[:, :, 1:], axis = 2)
   max_os_marg_matrix =     np.nanmax(os_marg_matrix[:, :, 1:], axis = 2)
   max_os_snr_matrix =      np.nanmax(os_snr_matrix[:, :, 1:], axis = 2)
+  argmax_os_snr_matrix =   np.nanargmax(os_snr_matrix[:, :, 1:], axis = 2)
   max_os_marg_snr_matrix = np.nanmax(os_marg_snr_matrix[:, :, 1:], axis = 2)
 
   plot_matrix(m_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = corr_label)
@@ -173,6 +178,7 @@ for corr in ['hd', 'dipole', 'monopole']:
   plot_matrix(max_os_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'max{}'.format(corr_label))
   plot_matrix(max_os_marg_matrix, norm = matplotlib.colors.LogNorm(), measure = 'A', label = 'maxmarg_{}'.format(corr_label))
   plot_matrix(max_os_snr_matrix, measure = 'S/N', label = 'max{}'.format(corr_label))
+  plot_matrix(argmax_os_snr_matrix, measure = 'S/N', label = 'max{}'.format(corr_label), close = False)
   plot_matrix(max_os_marg_snr_matrix, measure = 'S/N', label = 'maxmarg_{}'.format(corr_label))
 
 # fig, ax = plt.subplots(1,1)
