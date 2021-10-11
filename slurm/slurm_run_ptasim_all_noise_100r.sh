@@ -3,7 +3,7 @@
 #SBATCH --output=/flush5/zic006/gwb_crn_sims/slurm_logs/run_ptasim_all_noise_100r_%A_%a.log
 #SBATCH --ntasks-per-node=10
 #SBATCH --nodes=1
-#SBATCH --time=0-10:00:00
+#SBATCH --time=0-01:00:00
 #SBATCH --mem=16G
 #SBATCH --tmp=8G
 #SBATCH --array=0-121
