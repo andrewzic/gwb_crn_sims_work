@@ -59,7 +59,7 @@ for y in N:
 
 
         if True: #not os.path.exists('ptasim_input_files//{:.2f}_{:.2f}.inp'.format(dP0, dalpha)):
-            with open('ptasim_input_files/all_mc_array_spin_v_spincommon/100r/{:.2f}_{:.2f}.inp'.format(dP0, dalpha), 'w') as ptasim_inp_f:
+            with open('ptasim_input_files/spinnoise_100r/100r/{:.2f}_{:.2f}.inp'.format(dP0, dalpha), 'w') as ptasim_inp_f:
                 ptasim_inp_f.write(ptasim_inp_template_str.format('{:.2f}'.format(dP0), '{:.2f}'.format(dalpha), str_tnoise, str_obs))
                 ptasim_inp_f.close()
 
