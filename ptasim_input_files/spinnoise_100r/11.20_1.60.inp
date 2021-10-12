@@ -1,7 +1,7 @@
 <define>
 name: regsamp_11.20_1.60
 nproc: 10
-nreal: 200
+nreal: 20
 </define>
 
 <pulsars>
