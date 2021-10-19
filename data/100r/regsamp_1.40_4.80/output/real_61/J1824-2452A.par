@@ -1,0 +1,32 @@
+PSRJ           J1824-2452A
+RAJ            18:24:32.00788              
+DECJ           -24:52:10.834               
+F0             327.40559048006027631     1  4.6470872340503142284e-14
+F1             -1.7353021574132845339e-13 1  5.5823633108242899035e-22
+PEPOCH         54500                       
+POSEPOCH       54500                       
+DMEPOCH        54500                       
+DM             119.892                     
+DM1            0.0011500000000000000001    
+PMRA           -0.69                       
+START          51000.000000000026137       
+FINISH         58320.0000000108721         
+TRACK          -2                          
+TZRMJD         54680.000000008937686       
+TZRFRQ         1400                     
+TZRSITE        pks   
+TRES           0.346        
+EPHVER         5                           
+NE_SW          4                           
+CLK            TT(TAI)
+MODE 1
+UNITS          TCB
+TIMEEPH        IF99
+DILATEFREQ     Y
+PLANET_SHAPIRO Y
+T2CMETHOD      IAU2000B
+CORRECT_TROPOSPHERE  N
+EPHEM          DE421
+NITS           1
+NTOA           184
+CHI2R          2.0023 181

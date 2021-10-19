@@ -1,0 +1,42 @@
+PSRJ           J0613-0200
+ELONG          93.7990075599999999986233767   
+ELAT           -25.4071368199999999999694200   
+F0             326.60056705099306018     1  9.4717864483319342473e-14
+F1             -1.023005028003023005e-15 1  9.0427324439363452647e-22
+PEPOCH         55413                       
+POSEPOCH       55413                       
+DMEPOCH        53012                       
+DM             38.779190000000000001       
+PMELONG        2.1300000000000000001       
+PMELAT         -10.29                      
+PX             1.25                        
+BINARY         ELL1H
+PB             1.198512556715              
+A1             1.0914416000000000001       
+PBDOT          5.3999999999999999999e-14   
+TASC           55412.543283282000001       
+EPS1           2.5e-06                     
+EPS2           3.56e-06                    
+START          51000.00000000000011        
+FINISH         58320.000000017194935       
+TRACK          -2                          
+TZRMJD         54679.999999983593888       
+TZRFRQ         1400                     
+TZRSITE        pks   
+TRES           0.561        
+EPHVER         5                           
+H3             2.6999999999999999999e-07   
+STIG           0.70999999999999999998      
+NE_SW          4                           
+CLK            TT(TAI)
+MODE 1
+UNITS          TCB
+TIMEEPH        IF99
+DILATEFREQ     Y
+PLANET_SHAPIRO Y
+T2CMETHOD      IAU2000B
+CORRECT_TROPOSPHERE  N
+EPHEM          DE421
+NITS           1
+NTOA           184
+CHI2R          1.4432 181

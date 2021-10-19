@@ -1,0 +1,33 @@
+PSRJ           J1832-0836
+ELONG          278.2920070600000000127227651   
+ELAT           14.5907199500000000005894840   
+F0             367.7671211512631704      1  0.00000000049470394048   
+F1             -1.1480178155311436188e-15 1  2.3874834090169958873e-18
+PEPOCH         56862                       
+POSEPOCH       56862                       
+DMEPOCH        56790                       
+DM             28.19422                    
+PMELONG        -9.1899999999999999996      
+PMELAT         -20.700000000000000001      
+PX             0.40000000000000000001      
+START          51000.000000021822679       
+FINISH         58320.000000011965366       
+TRACK          -2                          
+TZRMJD         54679.999999974131974       
+TZRFRQ         1400                     
+TZRSITE        pks   
+TRES           1316.108     
+EPHVER         5                           
+NE_SW          4                           
+CLK            TT(TAI)
+MODE 1
+UNITS          TCB
+TIMEEPH        IF99
+DILATEFREQ     Y
+PLANET_SHAPIRO Y
+T2CMETHOD      IAU2000B
+CORRECT_TROPOSPHERE  N
+EPHEM          DE421
+NITS           1
+NTOA           184
+CHI2R          19345137.0604 181
