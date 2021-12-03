@@ -35,7 +35,7 @@ for specf in spec_files:
     freq = spec[:, 0]/86400.0
     psd = spec[:, 1]*((1.0*u.year).to(u.s).value)**3.0
     spec_ch0s.append(psd[0])
-    plt.plot(freq, psd, label = os.path.splitext(os.path.basename(specf))[0], color = '#9E9E9E', linewidth = 0.5, alpha = 0.5)
+    plt.plot(freq, psd, label = os.path.splitext(os.path.basename(specf))[0], color = '#9E9E9E', linewidth = 0.8, alpha = 0.5)
 
 #ax1.legend()
 
@@ -44,7 +44,7 @@ max_spec_ch0 = np.amax(spec_ch0s)
 ax1.set_xscale('log')
 ax1.set_yscale('log')
 ax1.set_xlabel(r'$\mathrm{Frequency~[Hz]}$', fontdict=font)
-ax1.set_ylabel(r'$P~\mathrm{{[s}}^3\mathrm{{]}}$')
+ax1.set_ylabel(r'$P~\mathrm{{[s}}^3\mathrm{{]}}$', fontdict = font)
 ax1.tick_params(axis='y', labelsize = font['size'])
 ax1.tick_params(axis='x', labelsize = font['size'])
 ax1.set_ylim(10**(int(np.log10(ax1.get_ylim()[0]))), 10**(int(np.log10(max_spec_ch0))))

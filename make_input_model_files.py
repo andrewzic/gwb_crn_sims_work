@@ -5,6 +5,7 @@ import sys
 import glob
 
 noiseval_fname = sys.argv[1] #.dat file containing alpha, p0, and toa errbar for each psr
+outdir = sys.argv[2]
 
 template_str = """MODEL 1
 ALPHA {:.2f}
@@ -22,7 +23,7 @@ with open(noiseval_fname, 'r') as noise_f:
             
             row = np.array(line.strip().split('\t'), dtype = np.float64)
             alpha, p0, dt = row
-            out_fname = "cholspec_inp_files/{}_input.model".format(psr.strip())
+            out_fname = "{}/{}_input.model".format(outdir, psr.strip())
             with open(out_fname, 'w') as out_f:
                 out_f.write(template_str.format(-1.0*alpha, p0)) #negating alpha because it should be negative in dat file
                 out_f.close()
