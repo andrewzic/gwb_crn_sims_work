@@ -30,7 +30,7 @@ spec_dirs = [spec_dir_fmt.format(i) for i in noise_samps]
 spec_file_sets = [sorted(glob.glob('{}/*.spec'.format(dir))) for dir in spec_dirs]
 
 print(len(spec_file_sets))
-fig, axs = plt.subplots(4, 1, figsize = (3.3, 4.0*2.04 -2))
+fig, axs = plt.subplots(4, 1, figsize = (3.3, 4.0*2.04 -1))
 
 spec_ch0s_all = []
 
