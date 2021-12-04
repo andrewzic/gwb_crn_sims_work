@@ -65,8 +65,8 @@ for a, spec_file_set, DP0, DALPHA in zip(axs, spec_file_sets, DP0s, DALPHAs):
     #a.text(
     a.set_xscale('log')
     a.set_yscale('log')
-    a.set_xlabel(r'Frequency$\,(\mathrm{{Hz}})$', fontdict=font)
-    a.set_ylabel(r'$\mathcal{P}\,(\mathrm{{s}}^{{3}})$', fontdict = font)
+    a.set_xlabel(r'Frequency$\,[\mathrm{{Hz}}]$', fontdict=font)
+    a.set_ylabel(r'$\mathcal{P}\,[\mathrm{{s}}^{{3}}]$', fontdict = font)
     a.tick_params(axis='y', labelsize = 12)
     a.tick_params(axis='x', labelsize = 12)#font['size'])
 
