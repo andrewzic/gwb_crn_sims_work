@@ -61,7 +61,8 @@ for a, spec_file_set, DP0, DALPHA in zip(axs, spec_file_sets, DP0s, DALPHAs):
 
     max_spec_ch0 = np.amax(spec_ch0s)
     spec_ch0s_all.append(max_spec_ch0)
-    a.set_title(r'$\Delta P_0 = {:.1f}$, $\Delta \alpha = {:.1f}$'.format(DP0, DALPHA), fontdict = font)
+    a.set_title(r'$\Delta P_0 = {:.1f}$, $\Delta \alpha = {:.1f}$'.format(DP0, DALPHA), fontsize = 12)
+    #a.text(
     a.set_xscale('log')
     a.set_yscale('log')
     a.set_xlabel(r'Frequency$\,(\mathrm{{Hz}})$', fontdict=font)
