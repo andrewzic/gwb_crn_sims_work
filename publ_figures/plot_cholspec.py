@@ -73,7 +73,7 @@ for a, spec_file_set, DP0, DALPHA in zip(axs, spec_file_sets, DP0s, DALPHAs):
     a.set_xlim(10**(int(np.log10(a.get_xlim()[0]) - 1)),1E-7)
 
 for ax in axs:
-    plt.minorticks_on()
+    ax.minorticks_on()
     ax.set_ylim(10**-10, 10**(int(np.log10(np.amax(spec_ch0s_all)))+2))
     #plt.legend()
 #(int(np.log10(ax.get_ylim()[0])))
