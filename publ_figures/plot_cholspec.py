@@ -30,7 +30,7 @@ spec_dirs = [spec_dir_fmt.format(i) for i in noise_samps]
 spec_file_sets = [sorted(glob.glob('{}/*.spec'.format(dir))) for dir in spec_dirs]
 
 print(len(spec_file_sets))
-fig, axs = plt.subplots(4, 1, figsize = (3.3, 4.0*2.04 -1))
+fig, axs = plt.subplots(4, 1, figsize = (3.3, 3.0*2.04), sharex = True, sharey = True)
 
 spec_ch0s_all = []
 
@@ -61,16 +61,17 @@ for a, spec_file_set, DP0, DALPHA in zip(axs, spec_file_sets, DP0s, DALPHAs):
 
     max_spec_ch0 = np.amax(spec_ch0s)
     spec_ch0s_all.append(max_spec_ch0)
-    a.set_title(r'$\Delta P_0 = {:.1f}$, $\Delta \alpha = {:.1f}$'.format(DP0, DALPHA), fontsize = 12)
+    a.text(9E-8, 1E-2, r'$\Delta P_0 = {:.1f}$, $\Delta \alpha = {:.1f}$'.format(DP0, DALPHA), fontsize = 10, horizontalalignment = 'right')
     #a.text(
     a.set_xscale('log')
     a.set_yscale('log')
-    a.set_xlabel(r'Frequency$\,[\mathrm{{Hz}}]$', fontdict=font)
+    if DALPHA == DALPHAs[-1]:##a == axs[-1]:
+        a.set_xlabel(r'Frequency$\,[\mathrm{{Hz}}]$', fontdict=font)
     a.set_ylabel(r'$\mathcal{P}\,[\mathrm{{s}}^{{3}}]$', fontdict = font)
     a.tick_params(axis='y', labelsize = 12)
     a.tick_params(axis='x', labelsize = 12)#font['size'])
 
-    a.set_xlim(10**(int(np.log10(a.get_xlim()[0]) - 1)),1E-7)
+    a.set_xlim(1E-9,1E-7)
 
 for ax in axs:
     ax.minorticks_on()
